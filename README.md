@@ -5,3 +5,6 @@
 #### Java, SerenityBDD, Serenity-Ensure, Cucumber 
 
 ## Pipeline with Jenkins
+
+
+gradle --refresh-dependencies
