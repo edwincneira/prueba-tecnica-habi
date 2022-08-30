@@ -14,8 +14,10 @@ public class DateTime implements Task {
         actor.attemptsTo(
                 NavigateDatePicker.nav(),
                 DateAndTime.in()
-        );
+                //Ensure.that(SeeAttribute.on(LABEL_DATE_AND_TIME_TEXT, String.valueOf(year))).isTrue()
 
+                //Sin validacion ya que estoy ingresando la fecha de manera erronea
+        );
     }
 
     public static DateTime searchDateAndTime(){

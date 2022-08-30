@@ -1,7 +1,7 @@
 package com.demoqa.tasks;
 
 import com.demoqa.interactions.NavigateTables;
-import com.demoqa.utils.Wait;
+import com.demoqa.questions.SeeText;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -9,8 +9,12 @@ import net.serenitybdd.screenplay.Tasks;
 
 import com.demoqa.utils.IsPerson;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.targets.Target;
 
+import static com.demoqa.user_interfaces.HomePage.BTN_ADD_REGISTER;
+import static com.demoqa.user_interfaces.RegisterPage.getEmptyNameDeleted;
 import static com.demoqa.utils.VariablesGlobals.rowItemIsPerson;
 import static com.demoqa.user_interfaces.RegisterPage.getBasketForDeleteUser;
 public class DeleteUser implements Task {
@@ -37,8 +41,7 @@ public class DeleteUser implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                NavigateTables.nav(),
-                Wait.aSeconds(2)
+                NavigateTables.nav()
         );
 
         isPerson = IsPerson.here(actor, name, lastName, email);
@@ -46,8 +49,12 @@ public class DeleteUser implements Task {
         if(isPerson){
             Target basket = getBasketForDeleteUser(String.valueOf(rowItemIsPerson));
             actor.attemptsTo(
+                    Scroll.to(BTN_ADD_REGISTER),
+                    Scroll.to(basket),
                     Click.on(basket)
-                    //Agregar validacion de eliminacion del usuario y agregarlo al reporte
+            );
+            actor.attemptsTo(
+                    Ensure.that(SeeText.of(getEmptyNameDeleted(String.valueOf(rowItemIsPerson))).answeredBy(actor)).doesNotContain(name)
             );
         } else {
             Serenity.recordReportData().withTitle("Usuario no eliminado").andContents("EL usuario no existe en la pagina demoqa.com ");

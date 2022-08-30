@@ -26,8 +26,6 @@ ext {
     slf4jVersion = '1.7.7'
     serenityCoreVersion = '3.3.0'
     serenityCucumberVersion = '3.3.0'
-    junitVersion = '4.13.1'
-    assertJVersion = '3.23.1'
     logbackVersion = '1.2.10'
     serenityEnsureVersion = '2.0.49'
     springJDBCVersion = '5.3.22'
@@ -41,12 +39,7 @@ dependencies {
             "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
             "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}",
-            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
-            "junit:junit:${junitVersion}",
-            "org.junit.platform:junit-platform-launcher:1.8.2",
-            "org.junit.jupiter:junit-jupiter-engine:5.8.2",
-            "org.junit.vintage:junit-vintage-engine:5.8.2",
-            "org.assertj:assertj-core:${assertJVersion}"
+            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}"
 }
 
 test {

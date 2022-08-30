@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 
 public class HomePage {
 
-
-    public static final Target PAGE_ELEMENTS =  Target.the("pages elements identifier").located(By.xpath("//div[@class='category-cards']//child::div[1]"));
     public static final Target ITEM_WEB_TABLES_OF_LIST_ELEMENT =  Target.the("item web tables identifier").located(By.xpath("//li[@class='btn btn-light ' and @id='item-3']"));
     public static final Target ITEM_DATE_PICKER_OF_LIST_ELEMENT =  Target.the("item date picker identifier").located(By.xpath("//div[@class='accordion']//child::div[4]//li[@class='btn btn-light ' and @id='item-2']"));
     public static final Target BTN_ADD_REGISTER =  Target.the("btn add register identifier").located(By.id("addNewRecordButton"));

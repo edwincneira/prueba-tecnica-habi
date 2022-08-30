@@ -14,7 +14,7 @@ public class DbRun {
             connection = null;
             connection = DriverManager.getConnection(HOST,USER,PASSWORD);
             if (connection != null){
-                System.out.println("conexion establecida MUY..");
+                System.out.println("Connect");
             }
         } catch (SQLException e) {
             e.printStackTrace();

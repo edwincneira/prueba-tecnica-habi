@@ -29,9 +29,4 @@ public class RegisterStepDefinitions {
         theActorInTheSpotlight().attemptsTo(DeleteUser.deleteUser(name, lastName, email, age, salary, department));
     }
 
-    @Y("^(.*) decide eliminar el registro que previamente realizo$")
-    public void deleteRegisterPrevious(String user) {
-
-    }
-
 }

@@ -12,7 +12,7 @@ public class DateStepDefinitions {
     @Entonces("^El decide ingresar la fecha (.*) en la seccion select date$")
     public void navigateToSelectDateAndInDate(String date) {
         new ClearDate(date).setDate();
-        theActorInTheSpotlight().attemptsTo(Date.searchDateSelect());
+        theActorInTheSpotlight().attemptsTo(Date.searchDateSelect(date));
     }
 
     @Entonces("^El decide ingresar la fecha (.*) en la seccion date and time$")

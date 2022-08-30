@@ -1,5 +1,6 @@
 package com.demoqa.utils;
 
+import com.demoqa.questions.SeeText;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
@@ -7,7 +8,6 @@ import org.openqa.selenium.By;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.demoqa.utils.Contain.getElementText;
 import static com.demoqa.utils.VariablesGlobals.rowItemIsPerson;
 import static com.demoqa.utils.VariablesConst.NUMBER_OF_COLUMNS_WEB_TABLES;
 
@@ -23,7 +23,7 @@ public class IsPerson {
         for (int i=1; i<20; i++) {
             for (int j=1; j<NUMBER_OF_COLUMNS_WEB_TABLES; j++) {
                 Target target = Target.the("names identifier").located(By.xpath(String.format(xpath, String.valueOf(i), String.valueOf(j))));
-                _value = getElementText(target, actor);
+                _value = SeeText.of(target).answeredBy(actor);
                 if(_value.equals(" ")) break;
                 list_data_persons_registers.add(_value);
             }
