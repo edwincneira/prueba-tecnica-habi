@@ -30,7 +30,3 @@ Característica: Validar la adicion de cualquier fecha dentro de la seccion Sele
       | 02/25/1999 04:00  |
       | 02/09/1999 04:00  |
       | 03/01/2022 08:15  |
-      | 04/25/2023 17:30  |
-      | 05/23/2100 14:30  |
-      | 06/20/1920 23:00  |
-      | 07/01/2008 23:45  |
