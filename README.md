@@ -43,7 +43,7 @@
 
 * ScreenPlay Layout Pattern
 
-[<img height="200" src="media/images/Design/screenplay.jpg" width="400"/>](screenplay.jpg)
+[<img height="200" src="media/images/design/screenplay.jpg" width="400"/>](screenplay.jpg)
 
 ----
 
@@ -100,6 +100,33 @@
 
 ## Pipeline with Jenkins
 
-- 
+- Steps Pipeline success
+
+[<img height="400" src="media/images/pipeline/pipeline-steps.png" width="800"/>](pipeline-steps.png)
+
+----
+
+- Configuration Pipeline
+
+[<img height="400" src="media/images/pipeline/pipeline-configuration-2.png" width="800"/>](pipeline-configuration-2.png)
+
+----
+
+- Serenity Started 
+
+[<img height="400" src="media/images/pipeline/pipeline-start-serenity.png" width="800"/>](pipeline-start-serenity.png)
+
+----
+
+- First Test Passed
+
+[<img height="400" src="media/images/pipeline/pipeline-first-test-passed.png" width="800"/>](pipeline-first-test-passed.png)
+
+----
+
+- Status Pipeline: Tests success but build failure
+
+[<img height="400" src="media/images/pipeline/pipeline-status.png" width="800"/>](pipeline-status.png.png)
+
 
 ----
