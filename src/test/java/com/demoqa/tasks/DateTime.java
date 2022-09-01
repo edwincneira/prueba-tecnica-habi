@@ -8,7 +8,9 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Scroll;
+import net.serenitybdd.screenplay.conditions.Check;
 import net.serenitybdd.screenplay.targets.Target;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static com.demoqa.user_interfaces.DatePage.*;
 import static com.demoqa.user_interfaces.DatePage.xpathMonthDateTime;
@@ -30,8 +32,13 @@ public class DateTime implements Task {
                 NavigateDatePicker.nav(),
                 Scroll.to(INPUT_TXT_DATE_DATE_AND_TIME),
                 Click.on(INPUT_TXT_DATE_DATE_AND_TIME),
-                Scroll.to(BTN_MONTH_DATE_AND_TIME),
-                Click.on(BTN_MONTH_DATE_AND_TIME),
+                Check.whether(BTN_MONTH_DATE_AND_TIME.resolveFor(actor).isClickable()).andIfSo(
+                        Scroll.to(BTN_MONTH_DATE_AND_TIME),
+                        Click.on(BTN_MONTH_DATE_AND_TIME)
+                ).otherwise(
+                        Scroll.to(BTN_MONTH_DATE_AND_TIME),
+                        Click.on(BTN_MONTH_DATE_AND_TIME)
+                ),
                 Scroll.to(selectMonth),
                 Click.on(selectMonth),
                 CalendarDays.selectBy(xpathDayDateTime),

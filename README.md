@@ -1,4 +1,4 @@
-# Automation for demoqa.com
+# Automation for demoqa.com (18 Tests)
 
 ### Tools:
 

@@ -12,14 +12,15 @@ import net.serenitybdd.screenplay.targets.Target;
 public class NavigateHome implements Interaction {
 
     private int item;
+    private Target section;
 
     public NavigateHome(int item) {
         this.item = item;
+        this.section = getPageHomeByItem(String.valueOf(item));
     }
 
     @Override
     public <T extends Actor> void performAs(T actor)  {
-        Target section = getPageHomeByItem(String.valueOf(item));
         actor.attemptsTo(
                 Scroll.to(section),
                 Click.on(section)
