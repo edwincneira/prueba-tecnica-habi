@@ -34,6 +34,7 @@ public class DateSelect implements Task {
                 NavigateDatePicker.nav(),
                 Scroll.to(INPUT_TXT_SELECT_DATE),
                 Click.on(INPUT_TXT_SELECT_DATE),
+                Scroll.to(BTN_MONTH_SELECT_DATE),
                 Click.on(BTN_MONTH_SELECT_DATE),
                 Scroll.to(selectMonth),
                 Click.on(selectMonth),
