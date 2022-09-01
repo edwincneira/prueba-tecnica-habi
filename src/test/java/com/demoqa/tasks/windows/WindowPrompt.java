@@ -1,16 +1,16 @@
 package com.demoqa.tasks.windows;
 
+import com.demoqa.questions.WhatText;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.*;
 
-import com.demoqa.questions.SeeText;
 import static com.demoqa.user_interfaces.WindowsPage.BTN_PROMPT;
 import static com.demoqa.user_interfaces.WindowsPage.LABEL_MESSAGE_PROMPT;
 
 import com.demoqa.utils.PromptAction;
-import com.demoqa.factories.Visible;
+import com.demoqa.questions.IsVisible;
 import net.serenitybdd.screenplay.ensure.Ensure;
 
 public class WindowPrompt implements Task {
@@ -30,13 +30,13 @@ public class WindowPrompt implements Task {
         );
         PromptAction.writeAndDo(message, acceptCancel);
         if(acceptCancel) {
-            String messageLabel = SeeText.of(LABEL_MESSAGE_PROMPT).answeredBy(actor);
+            String messageLabel = WhatText.of(LABEL_MESSAGE_PROMPT).answeredBy(actor);
             actor.attemptsTo(
                     Ensure.that(messageLabel).contains(message)
             );
         } else {
             actor.attemptsTo(
-                    Ensure.that(Visible.of(LABEL_MESSAGE_PROMPT)).isFalse()
+                    Ensure.that(IsVisible.of(LABEL_MESSAGE_PROMPT)).isFalse()
             );
         }
     }

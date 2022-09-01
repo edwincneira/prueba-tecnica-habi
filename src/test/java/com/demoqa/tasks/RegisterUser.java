@@ -1,8 +1,8 @@
 package com.demoqa.tasks;
 
-import com.demoqa.interactions.NavigateTables;
+import com.demoqa.interactions.NavigateWebTables;
 import com.demoqa.interactions.Write;
-import com.demoqa.questions.SeeText;
+import com.demoqa.questions.WhatText;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -16,7 +16,7 @@ import static com.demoqa.user_interfaces.RegisterPage.*;
 import static com.demoqa.user_interfaces.HomePage.BTN_ADD_REGISTER;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
-public class Register implements Task {
+public class RegisterUser implements Task {
 
     private String name;
     private String lastName;
@@ -25,7 +25,7 @@ public class Register implements Task {
     private int salary;
     private String department;
 
-    public Register(String name, String lastName, String email, int age, int salary, String department) {
+    public RegisterUser(String name, String lastName, String email, int age, int salary, String department) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -37,7 +37,7 @@ public class Register implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                NavigateTables.nav(),
+                NavigateWebTables.nav(),
                 WaitUntil.the(BTN_ADD_REGISTER, isVisible()).forNoMoreThan(5).seconds(),
                 Scroll.to(BTN_ADD_REGISTER),
                 Click.on(BTN_ADD_REGISTER),
@@ -48,14 +48,14 @@ public class Register implements Task {
                 Write.some(INPUT_SALARY, String.valueOf(salary)),
                 Enter.theValue(department).into(INPUT_DEPARTMENT_NAME).thenHit(Keys.ENTER)
         );
-        String messageLabel = SeeText.of(ITEM_NEW_USER).answeredBy(actor);
+        String messageLabel = WhatText.of(ITEM_NEW_USER).answeredBy(actor);
         actor.attemptsTo(
                 Ensure.that(messageLabel).contains(email)
         );
     }
 
-    public static Register registerUser(String name, String lastName, String email, int age, int salary, String department){
-        return Tasks.instrumented(Register.class, name, lastName, email, age, salary, department);
+    public static RegisterUser registerUser(String name, String lastName, String email, int age, int salary, String department){
+        return Tasks.instrumented(RegisterUser.class, name, lastName, email, age, salary, department);
     }
 
 

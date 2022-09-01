@@ -18,6 +18,8 @@ public class SeeAttribute implements Question<Boolean> {
 
     @Override
     public Boolean answeredBy(Actor actor) {
+//        System.out.println("ATRIBUTO A VER " + attribute);
+
         return BrowseTheWeb.as(actor).find(By.xpath(String.format(xpath, attribute))).isVisible();
     }
 

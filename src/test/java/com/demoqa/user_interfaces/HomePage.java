@@ -10,8 +10,6 @@ public class HomePage {
     public static final Target BTN_ADD_REGISTER =  Target.the("btn add register identifier").located(By.id("addNewRecordButton"));
 
     public static Target getPageHomeByItem(String item) {
-//        return Target.the(String.format("page element item %s identifier", item)).located(By.xpath(String.format("//div[@class='category-cards']//child::div[%s]", item)));
         return Target.the(String.format("page element item %s identifier", item)).located(By.xpath(String.format("//div[@class='category-cards']//child::div[@class='card mt-4 top-card'][%s]", item)));
     }
-
 }

@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.actions.Scroll;
 
 import static com.demoqa.user_interfaces.HomePage.ITEM_WEB_TABLES_OF_LIST_ELEMENT;
 
-public class NavigateTables implements Interaction {
+public class NavigateWebTables implements Interaction {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
@@ -19,5 +19,5 @@ public class NavigateTables implements Interaction {
         );
     }
 
-    public static NavigateTables nav() { return Tasks.instrumented(NavigateTables.class);}
+    public static NavigateWebTables nav() { return Tasks.instrumented(NavigateWebTables.class);}
 }

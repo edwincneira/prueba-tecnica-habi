@@ -1,6 +1,6 @@
 package com.demoqa.tasks.windows;
 
-import com.demoqa.factories.Visible;
+import com.demoqa.questions.IsVisible;
 import com.demoqa.utils.Wait;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -18,7 +18,7 @@ public class WindowAlert implements Task {
                 Click.on(BTN_ALERT),
                 Wait.aSeconds(3),
                 Switch.toAlert().andAccept(),
-                Ensure.that(Visible.of(BTN_ALERT)).isTrue()
+                Ensure.that(IsVisible.of(BTN_ALERT)).isTrue()
         );
 
     }

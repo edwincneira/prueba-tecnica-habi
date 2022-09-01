@@ -1,6 +1,6 @@
 package com.demoqa.tasks.windows;
 
-import com.demoqa.factories.Visible;
+import com.demoqa.questions.IsVisible;
 import com.demoqa.utils.Wait;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -24,7 +24,7 @@ public class WindowWaitFive implements Task {
                 Click.on(BTN_APPEAR_ALERT_FIVE_SECOND),
                 Wait.aSeconds(wait),
                 Switch.toAlert().andAccept(),
-                Ensure.that(Visible.of(BTN_APPEAR_ALERT_FIVE_SECOND)).isTrue()
+                Ensure.that(IsVisible.of(BTN_APPEAR_ALERT_FIVE_SECOND)).isTrue()
         );
 
     }

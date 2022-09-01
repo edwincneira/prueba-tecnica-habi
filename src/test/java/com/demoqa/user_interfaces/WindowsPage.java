@@ -9,8 +9,6 @@ public class WindowsPage {
     public static final Target BTN_APPEAR_ALERT_FIVE_SECOND =  Target.the("btn alert appear five second identifier").located(By.id("timerAlertButton"));
     public static final Target BTN_CONFIRM =  Target.the("btn confirm identifier").located(By.id("confirmButton"));
     public static final Target BTN_PROMPT =  Target.the("btn prompt identifier").located(By.id("promtButton"));
-
-    //QUESTIONS
     public static final Target LABEL_MESSAGE_PROMPT =  Target.the("btn prompt identifier").located(By.id("promptResult"));
     public static final Target LABEL_MESSAGE_CONFIRM =  Target.the("btn prompt identifier").located(By.id("confirmResult"));
 

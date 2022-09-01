@@ -1,6 +1,6 @@
 package com.demoqa.tasks.windows;
 
-import com.demoqa.questions.SeeText;
+import com.demoqa.questions.WhatText;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -29,10 +29,10 @@ public class WindowConfirm implements Task {
                 Click.on(BTN_CONFIRM),
                 Check.whether(acceptCancel).andIfSo(
                         Switch.toAlert().andAccept(),
-                        Ensure.that(SeeText.of(LABEL_MESSAGE_CONFIRM)).contains("Ok")
+                        Ensure.that(WhatText.of(LABEL_MESSAGE_CONFIRM)).contains("Ok")
                 ).otherwise(
                         Switch.toAlert().andDismiss(),
-                        Ensure.that(SeeText.of(LABEL_MESSAGE_CONFIRM)).contains("Cancel")
+                        Ensure.that(WhatText.of(LABEL_MESSAGE_CONFIRM)).contains("Cancel")
                 )
         );
 

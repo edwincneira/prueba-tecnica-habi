@@ -1,22 +1,22 @@
 package com.demoqa.tasks;
 
-import com.demoqa.interactions.NavigateTables;
-import com.demoqa.questions.SeeText;
+import com.demoqa.interactions.NavigateWebTables;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 
-import com.demoqa.utils.IsPerson;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Scroll;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.targets.Target;
 
 import static com.demoqa.user_interfaces.HomePage.BTN_ADD_REGISTER;
-import static com.demoqa.user_interfaces.RegisterPage.getEmptyNameDeleted;
-import static com.demoqa.utils.VariablesGlobals.rowItemIsPerson;
-import static com.demoqa.user_interfaces.RegisterPage.getBasketForDeleteUser;
+import static com.demoqa.user_interfaces.RegisterPage.*;
+
+import com.demoqa.questions.WhatText;
+import org.openqa.selenium.By;
+
 public class DeleteUser implements Task {
 
     private String name;
@@ -25,9 +25,11 @@ public class DeleteUser implements Task {
     private int age;
     private int salary;
     private String department;
-    private String xpath = "//div[@class='rt-tbody']//child::div[%s]//div//child::*[%s]";
     private boolean isPerson = false;
-
+    private String _list;
+    private static int list = 1;
+    private static Target targetEmail;
+    private static Target targetBasket;
 
     public DeleteUser(String name, String lastName, String email, int age, int salary, String department) {
         this.name = name;
@@ -41,25 +43,37 @@ public class DeleteUser implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                NavigateTables.nav()
+                NavigateWebTables.nav()
         );
-
-        isPerson = IsPerson.here(actor, name, lastName, email);
-
-        if(isPerson){
-            Target basket = getBasketForDeleteUser(String.valueOf(rowItemIsPerson));
-            actor.attemptsTo(
-                    Scroll.to(BTN_ADD_REGISTER),
-                    Scroll.to(basket),
-                    Click.on(basket)
-            );
-            actor.attemptsTo(
-                    Ensure.that(SeeText.of(getEmptyNameDeleted(String.valueOf(rowItemIsPerson))).answeredBy(actor)).doesNotContain(name)
-            );
-        } else {
-            Serenity.recordReportData().withTitle("Usuario no eliminado").andContents("EL usuario no existe en la pagina demoqa.com ");
+        //Search and Delete
+        while (!isPerson) {
+            targetEmail = Target.the("btn list ").located(By.xpath(String.format(LABEL_LIST, String.valueOf(list))));
+            String _email = WhatText.of(targetEmail).answeredBy(actor);
+            if(_email.equals(email)){
+                _list = String.valueOf(list);
+                isPerson = true;
+                targetBasket = getBasketForDeleteUser(_list);
+                actor.attemptsTo(
+                        Scroll.to(BTN_ADD_REGISTER),
+                        Scroll.to(targetBasket),
+                        Click.on(targetBasket)
+                );
+                list=1;
+                break;
+            }
+            list++;
+            if(list>10) {
+                Serenity.recordReportData().withTitle("Usuario no eliminado").andContents("EL usuario no existe en la pagina demoqa.com ");
+                break;
+            };
         }
-
+        //Confirm Delete
+        if(isPerson) {
+            String _email = WhatText.of(getEmailUser(_list)).answeredBy(actor);
+            actor.attemptsTo(
+                    Ensure.that(_email).doesNotContain(email)
+            );
+        }
     }
 
     public static DeleteUser deleteUser(String name, String lastName, String email, int age, int salary, String department){
