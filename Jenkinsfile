@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
 
-                git branch: 'feature/feedback', url: 'https://github.com/edwincneira/prueba-tecnica-habi'
+                git branch: 'main', url: 'https://github.com/edwincneira/prueba-tecnica-habi'
 
                 bat "gradle clean test"
 
