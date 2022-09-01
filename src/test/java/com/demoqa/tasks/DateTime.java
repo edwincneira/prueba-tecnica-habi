@@ -36,8 +36,7 @@ public class DateTime implements Task {
                 Click.on(selectMonth),
                 CalendarDays.selectBy(xpathDayDateTime),
                 Click.on(BTN_FIRST_HOUR),
-                Scroll.to(INPUT_TXT_DATE_DATE_AND_TIME),
-                Wait.aSeconds(5)
+                Scroll.to(INPUT_TXT_DATE_DATE_AND_TIME)
         );
     }
     public static DateTime searchDateAndTime(String date){
